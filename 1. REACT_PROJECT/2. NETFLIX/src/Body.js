@@ -6,7 +6,7 @@ import { RouterProvider } from 'react-router-dom'
 
 
 const Body = () => {
-    const router = createBrowserRouter([
+    const appRouter = createBrowserRouter([
         {
             path: '/',
             element: <Login/>
@@ -16,8 +16,13 @@ const Body = () => {
             element: <Browse/>
         }
     ])
-    return (
-        <RouterProvider router ={router}/>
+
+    /*
+     * We are creating the router using the createBrowseRouter and providing 
+     * the router to application using the RouterProvider
+    */
+     return (
+        <RouterProvider router ={appRouter}/>
     )
 }
 
