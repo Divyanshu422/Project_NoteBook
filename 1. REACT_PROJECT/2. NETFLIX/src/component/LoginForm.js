@@ -54,8 +54,13 @@ function LoginForm() {
             </div> 
             <div className='flex w-10/12 mx-auto'>
                 {/* <span className="text-slate-300 text-sm">New to Netflix? </span> */}
-                <NavLink className="text-slate-300 pl-1" onClick={formHandler}> 
-                {isSignInForm? 'New to Netflix?  Signup Now':'Already Registered? Sign In Now'}</NavLink>
+                <NavLink className="text-slate-300 pl-1" onClick={formHandler}>
+                    {isSignInForm ? (
+                        <div className='text-xl'>New to Netflix?  Signup Now</div>
+                    ) : (
+                        <div className='text-xl'>Already Registered? Sign In Now</div>
+                    )}
+                </NavLink>
             </div>
             
         </div>
