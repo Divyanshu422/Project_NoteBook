@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-// import { checkValidataSignUp, checkValidataSignIn } from '../../utils/validate';
+import { checkValidataSignUp, checkValidataSignIn } from '../utils/validate';
 function LoginForm() {
     const [isSignInForm, setIsSignInForm]= useState(true);
     const [errorMessage, setErrorMessage] = useState('');
@@ -15,20 +15,16 @@ function LoginForm() {
     }
 
     const submitHandler = (e) =>{
-        // e.preventDefault(); //! If we dont prevent the default Behaviour then => on the click of the form the component will be re-rendered
-        // if (isSignInForm) {
-        //     const result = checkValidataSignIn(email.current.value, password.current.value, name.current.value);
-        //     setErrorMessage(result);
-        //   } else {
-        //     const result = checkValidataSignUp(email.current.value, password.current.value);
-        //     setErrorMessage(result);
-        //   }
+        e.preventDefault(); //! If we dont prevent the default Behaviour then => on the click of the form the component will be re-rendered
+        if (isSignInForm) {
+            const result = checkValidataSignIn(email.current.value, password.current.value);
+            setErrorMessage(result);
+          } else {
+            const result = checkValidataSignUp(email.current.value, password.current.value, name.current.value);
+            setErrorMessage(result);
+          }
         
     }
-
-  
-
-
   return (
     <form className='absolute flex flex-col h-screen w-screen items-center justify-center' onSubmit={submitHandler}>
         <div className='flex flex-col bg-stone-950/80 w-3/12  py-20 px-10 gap-y-6 rounded-md'>
