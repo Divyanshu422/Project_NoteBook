@@ -1,11 +1,12 @@
 import React from 'react'
 import { SquareX } from 'lucide-react';
 import { Download } from 'lucide-react';
-function Modal() {
+function Modal({onClose}) {
+    
   return (
     <div className='fixed inset-0 bg-black/30 backdrop-blur-sm flex justify-center items-center'>
         <div className='mt-10 flex flex-col gap-5 text-white'>
-            <button className='place-self-end'>
+            <button className='place-self-end' onClick ={onClose}>
                 <SquareX size={30}/>
             </button>
             <div className='bg-indigo-600 rounded-md px-20 py-10 flex flex-col gap-5 items-center mx-4'>
