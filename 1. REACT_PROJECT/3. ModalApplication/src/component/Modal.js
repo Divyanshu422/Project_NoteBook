@@ -1,10 +1,22 @@
 import React from 'react'
 import { SquareX } from 'lucide-react';
 import { Download } from 'lucide-react';
+import { useRef } from 'react';
+
 function Modal({onClose}) {
+    const modalRef = useRef();
+    const handleOutsideClick = (event) => {
+        console.log('the useRef points to', modalRef.current);
+        console.log(event.target);
+
+        if(event.target == modalRef.current){
+            onClose();
+        }
     
+    }    
+
   return (
-    <div className='fixed inset-0 bg-black/30 backdrop-blur-sm flex justify-center items-center'>
+    <div ref = {modalRef} onClick = {handleOutsideClick} className='fixed inset-0 bg-black/30 backdrop-blur-sm flex justify-center items-center'>
         <div className='mt-10 flex flex-col gap-5 text-white'>
             <button className='place-self-end' onClick ={onClose}>
                 <SquareX size={30}/>
@@ -13,7 +25,7 @@ function Modal({onClose}) {
                 <h1 className='text-3xl font-extrabold'> Download Free E-book </h1>
                 <p className='text-3xl font-bold max-w-md text-center'>Want to Learn How to Crack Web Development Interviews Like a Pro!</p>
                 <form className='flex flex-col'>
-                    <input type='email' placeholder='Enter Your Email' requried
+                    <input type='email' placeholder='Enter Your Email' 
                         className='w-full px-4 py-3 text-black border-gray-300 rounded-md'
                     />
                     <button className='mt-3 w-full gap-2 flex items-center justify-center px-5 py-3 font-medium bg-black rounded-md'>
@@ -27,4 +39,4 @@ function Modal({onClose}) {
   )
 }
 
-export default Modal
+export default Modal;
